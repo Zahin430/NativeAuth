@@ -1,27 +1,41 @@
-import React, { Componenet } from 'react';
-import { View ,TextInput } from 'react-native';
-import { Button, Card, CardSection } from './common';
+import React, { Component } from 'react';
+import { Button, Card, CardSection, Input } from './common';
 
 
-class LoginForm extends Componenet {
+class LoginForm extends Component {
+    state = { email: '', password: '' };
+
     render() {
         return (
             <Card>
                 <CardSection>
-                    <TextInput style={{ height: 20, width: 100 }} />
+                    <Input
+                    label="Email"
+                    value = {this.state.email}
+                    onChangeText ={email => this.setState({ email })}            
+                    placeholder="user@gmail.com"
+                    />
                 </CardSection>
 
+                <CardSection>
+                    <Input 
+                    secureTextEntry
+                    label="Password"
+                    value = {this.state.password}
+                    onChangeText ={password => this.setState({ password })}            
+                    placeholder="password"                    
+                    />
+                </CardSection>
 
-                <CardSection />
-                
                 <CardSection>
                     <Button>
                         Log In
                     </Button>
                 </CardSection>                
             </Card>
+
         );
     }
-};
+}
 
 export default LoginForm;
